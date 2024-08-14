@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta de CEP</title>
 </head>
+<link rel="stylesheet" href="style.css">
 <body>
+    <div class = "consulta">
     <h1>Consulta de CEP</h1>
-    <label for="cepInput">Digite o CEP:</label>
+    </div>
+    <div class = "buscar">
+    <label for="cepInput"><h2>Digite o CEP:</h2></label>
+    
     <input type="text" id="cepInput">
-    <button onclick="buscarEndereco()">Buscar</button>
+    <br>
+    <br>
+    <button id = "button" onclick="buscarEndereco()">Buscar</button>
     <div id="endereco"></div>
-
+</div>
+<div id = "endereco"></div>
     <script>
         function buscarEndereco() {
             var cep = document.getElementById('cepInput').value;
@@ -23,8 +31,10 @@
                 if(data.erro) {
                     document.getElementById('endereco').innerText = "CEP não encontrado.";
                 } else {
-                    var endereco = `CEP: ${data.cep}, ${data.logradouro}, ${data.bairro}, ${data.localidade}, ${data.uf}`;
+                        var endereco = `CEP: ${data.cep}, ${data.logradouro}, ${data.bairro}, ${data.localidade}, ${data.uf}`; 
+                        
                     document.getElementById('endereco').innerText = endereco;
+                    
                 }
             })
             .catch(error => console.error('Erro:', error));
